@@ -1,5 +1,7 @@
 FROM golang:1.13-alpine
-ENV LANG='ja_JP.utf8'
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+ENV TZ=Europe/Berlin
 ENV GO111MODULE='on'
 
 ARG POSTGRES_DB
@@ -16,10 +18,10 @@ COPY ./api /go/app
 
 RUN apk --no-cache update \
     && apk add --no-cache git tzdata \
-    && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+    && cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
     && apk del tzdata \
     && rm -rf /var/cache/apk/* \
-    && go get gopkg.in/urfave/cli.v2@master \
+    && go get github.com/urfave/cli \
     && go get github.com/oxequa/realize
 
 CMD realize start
