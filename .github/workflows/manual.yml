@@ -29,6 +29,6 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: show pwd
-      run: pwd
+      run: echo $((pwd))
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
