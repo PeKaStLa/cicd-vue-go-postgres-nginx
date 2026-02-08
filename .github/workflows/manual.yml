@@ -28,7 +28,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: show pwd
-      run: echo "$(pwd)"
+    - name: Show current directory
+      run: pwd
+    - name: List files (before checkout)
+      run: ls      
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
